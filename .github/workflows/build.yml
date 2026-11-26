@@ -25,16 +25,7 @@ jobs:
           gradle-version: '8.7'
 
       - name: Fix Android XML Namespaces
-        run: |
-          python3 - << 'EOF'
-          import glob, re
-          u = "ht" + "tp://sche" + "mas.andr" + "://oid.com"
-          for f in glob.glob("app/src/main/**/*.xml", recursive=True):
-              txt = open(f).read()
-              if "xmlns:android=" in txt:
-                  txt = re.sub(r'xmlns:android="[^"]*"', f'xmlns:android="{u}"', txt)
-                  open(f, "w").write(txt)
-          EOF
+        run: python3 -c "import glob, base64; u = base64.b64decode('aHR0cDovL3NjaGVtYXMuYW5kcm9pZC5jb20vYXBrL3Jlcy9hbmRyb2lk').decode(); [open(f, 'w').write(open(f).read().replace('http://android.com', u)) for f in glob.glob('app/src/main/**/*.xml', recursive=True)]"
 
       - name: Build Debug APK
         run: gradle assembleDebug --no-daemon
