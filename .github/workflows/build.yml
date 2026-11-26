@@ -25,7 +25,10 @@ jobs:
           gradle-version: '8.7'
 
       - name: Fix Android XML Namespaces
-        run: find app/src/main -name "*.xml" -exec sed -i 's|http://android.com|http://android.com|g' {} +
+        run: |
+          P1="http://schemas."
+          P2="://android.com"
+          find app/src/main -name "*.xml" -exec sed -i "s|http://android.com|${P1}${P2}|g" {} +
 
       - name: Build Debug APK
         run: gradle assembleDebug --no-daemon
