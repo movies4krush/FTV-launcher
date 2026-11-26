@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://android.com"
+    android:layout_width="168dp"
+    android:layout_height="96dp"
+    android:layout_marginEnd="14dp"
+    android:background="@drawable/bg_card_glass"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:padding="3dp">
+
+    <ImageView
+        android:id="@+id/ivBanner"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/tvAppName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#880B0D12"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="3dp"
+        android:paddingBottom="4dp"
+        android:textColor="#FFFFFF"
+        android:textSize="11sp"
+        android:textStyle="bold" />
+</FrameLayout>
