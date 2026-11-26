@@ -26,9 +26,9 @@ jobs:
 
       - name: Fix Android XML Namespaces
         run: |
-          P1="http://schemas."
-          P2="://android.com"
-          find app/src/main -name "*.xml" -exec sed -i "s|http://android.com|${P1}${P2}|g" {} +
+          URL="http://schemas."
+          URL="${URL}://android.com"
+          find app/src/main -name "*.xml" -exec sed -i "s|xmlns:android=\"[^\"]*\"|xmlns:android=\"${URL}\"|g" {} +
 
       - name: Build Debug APK
         run: gradle assembleDebug --no-daemon
