@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://android.com"
+    android:layout_width="60dp"
+    android:layout_height="60dp"
+    android:layout_marginStart="6dp"
+    android:layout_marginEnd="6dp"
+    android:background="@drawable/bg_card_glass"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:padding="6dp">
+
+    <ImageView
+        android:id="@+id/ivDockIcon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitCenter" />
+</FrameLayout>
