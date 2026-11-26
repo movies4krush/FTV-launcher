@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://android.com"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0B0D12">
+
+    <!-- 1. Photo Wallpaper Layer -->
+    <ImageView
+        android:id="@+id/ivPhotoWallpaper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop" />
+
+    <!-- 2. Video Wallpaper Layer (TextureView preserves frosted overlay transparency) -->
+    <TextureView
+        android:id="@+id/tvVideoWallpaper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <!-- Subtle Dark Vignette so white text is always readable -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#33000000" />
+
+    <!-- 3. Custom Application & Channel Rows -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvMainRows"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingTop="84dp"
+        android:paddingBottom="116dp"
+        android:paddingStart="36dp"
+        android:paddingEnd="36dp"
+        android:nextFocusDown="@+id/rvDock" />
+
+    <!-- 4. Frosted Top Status Bar (Clock, Wi-Fi, Bluetooth, Launcher Settings, Fire OS Settings) -->
+    <LinearLayout
+        android:id="@+id/statusBarContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="46dp"
+        android:layout_gravity="top|end"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="36dp"
+        android:background="@drawable/bg_frosted_pill"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="18dp"
+        android:paddingEnd="14dp">
+
+        <TextClock
+            android:id="@+id/tvClock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:format12Hour="hh:mm a"
+            android:format24Hour="HH:mm"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="14dp" />
+
+        <TextView
+            android:id="@+id/ivWifiStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wi-Fi"
+            android:textColor="#4ADE80"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="12dp" />
+
+        <TextView
+            android:id="@+id/ivBtStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BT"
+            android:textColor="#94A3B8"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="14dp" />
+
+        <Button
+            android:id="@+id/btnLauncherSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_card_glass"
+            android:focusable="true"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="Customize"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btnFireOsSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_card_glass"
+            android:focusable="true"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:text="Fire OS"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- 5. Frosted Bottom-Center Dock -->
+    <LinearLayout
+        android:id="@+id/dockContainer"
+        android:layout_width="wrap_content"
+        android:layout_height="84dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_frosted_pill"
+        android:gravity="center"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDock"
+            android:layout_width="wrap_content"
+            android:layout_height="68dp"
+            android:clipToPadding="false"
+            android:nextFocusUp="@+id/rvMainRows" />
+    </LinearLayout>
+
+</FrameLayout>
