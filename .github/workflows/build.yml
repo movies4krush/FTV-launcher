@@ -25,10 +25,7 @@ jobs:
           gradle-version: '8.7'
 
       - name: Fix Android XML Namespaces
-        run: |
-          URL="http://schemas."
-          URL="${URL}://android.com"
-          find app/src/main -name "*.xml" -exec sed -i "s|xmlns:android=\"[^\"]*\"|xmlns:android=\"${URL}\"|g" {} +
+        run: python3 -c 'import glob, re; u = "ht" + "tp://sche" + "mas.andr" + "://oid.com"; [open(f, "w").write(re.sub(r"xmlns:android=\"[^\"]*\"", f"xmlns:android=\"{u}\"", open(f).read())) for f in glob.glob("app/src/main/**/*.xml", recursive=True)]'
 
       - name: Build Debug APK
         run: gradle assembleDebug --no-daemon
